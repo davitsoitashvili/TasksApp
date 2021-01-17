@@ -1,18 +1,31 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import './App.css';
-import { getTasksCount } from './redux/actions/taskActions';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { NavLink, Route, Switch } from "react-router-dom";
+import "./App.css";
+import CreateTask from "./components/CreateTask";
+import GetTasksList from "./components/GetTasksList";
 
 function App() {
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getTasksCount(10))
-  }, [dispatch])
 
-  const tasksCount = useSelector(reducers => reducers.appTasks.tasksCount);
+  useEffect(() => {
+    
+  }, [dispatch]);
+
   return (
     <div className="App">
-      <h2>Tasks {tasksCount}</h2>
+      <NavLink to="/">Show All Tasks</NavLink>
+      <br/>
+      <NavLink to="/create">Create New Task</NavLink>
+
+      <Switch>
+        <Route path="/" exact>
+          <GetTasksList/>
+        </Route>
+        <Route path="/create">
+          <CreateTask/>
+        </Route>
+      </Switch>
     </div>
   );
 }
