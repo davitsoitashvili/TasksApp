@@ -17,6 +17,7 @@ function App() {
       <NavLink to="/">Show All Tasks</NavLink>
       <br/>
       <NavLink to="/create">Create New Task</NavLink>
+      <hr/>
 
       <Switch>
         <Route path="/" exact>
