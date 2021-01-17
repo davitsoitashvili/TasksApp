@@ -11,7 +11,7 @@ export default function taskReducer(state = initState, action) {
     case GET_TASKS_LIST:
       return {
         ...state,
-        tasks: action.data,
+        tasks : action.data
       };
     case GET_TASK:
       return {
