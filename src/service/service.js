@@ -22,12 +22,18 @@ export const createTask = async (requestData) => {
 export const getTasksListAsync = () => {
   return (dispatch) => {
     return fetch(`${BASE_URL}/tasks/`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          throw new Error();
+        }
+      })
       .then((data) => {
         dispatch(getTasksList(data));
       })
       .catch((error) => {
-        alert(error);
+        alert("There is some fetch error, try again!");
       });
   };
 };
